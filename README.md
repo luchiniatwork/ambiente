@@ -74,25 +74,25 @@ Alternatively, the `.env` file could have been used. It contains a
 list key/value pairs separated by newlines:
 
 ``` text
-DATABASE_URL=jdbc:postgresql://localhost/dev
+$ DATABASE_URL=jdbc:postgresql://localhost/dev
 ```
 
 This means that if you run your repl locally (i.e. `$ clojure`), the
-dev database will be used, and if you run
-`$DATABASE_URL=jdbc:postgresql://localhost/test clojure`, the test
+dev database will be used, and if you run `$
+DATABASE_URL=jdbc:postgresql://localhost/test clojure`, the test
 database will be used.
 
 When you deploy to a production environment, you can make use of
 environment variables, like so:
 
 ```bash
-DATABASE_URL=jdbc:postgresql://localhost/prod java -jar standalone.jar
+$ DATABASE_URL=jdbc:postgresql://localhost/prod java -jar standalone.jar
 ```
 
 Or use Java system properties:
 
 ```bash
-java -Ddatabase.url=jdbc:postgresql://localhost/prod -jar standalone.jar
+$ java -Ddatabase.url=jdbc:postgresql://localhost/prod -jar standalone.jar
 ```
 
 Note that `Ambiente` automatically lower-cases keys, replaces the
