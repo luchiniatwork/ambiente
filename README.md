@@ -28,7 +28,7 @@ format.
 Include the following dependency in your `deps.edn`:
 
 ```clojure
-{:deps {ambiente/ambiente {:mvn/version "1.0.0"}}}
+{:deps {ambiente/ambiente {:mvn/version "0.1.0"}}}
 ```
 
 
