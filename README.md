@@ -123,7 +123,5 @@ variables and profiles are different things to be managed.
 
 ## License
 
-Copyright © 2020 James Reeves
-
 Distributed under the MIT Public License. Use it as you
 will. Contribute if you have the time.
