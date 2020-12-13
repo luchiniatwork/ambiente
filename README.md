@@ -1,7 +1,19 @@
 [environ]: https://github.com/weavejester/environ
 [dotenv]: https://github.com/LynxEyes/dotenv.clj
 
+[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[license]: ./LICENSE
+
+[clojars-badge]: https://img.shields.io/clojars/v/luchiniatwork/ambiente.svg
+[clojars]: http://clojars.org/luchiniatwork/ambiente
+
+[status-badge]: https://img.shields.io/badge/project%20status-prod-brightgreen.svg
+
 # Ambiente
+
+[![Clojars][clojars-badge]][clojars]
+[![License][license-badge]][license]
+![Status][status-badge]
 
 `Ambiente` is a Clojure library for managing environment settings from
 a number of different sources. It works well for applications
@@ -28,7 +40,7 @@ format.
 Include the following dependency in your `deps.edn`:
 
 ```clojure
-{:deps {ambiente/ambiente {:mvn/version "0.1.0"}}}
+{:deps {luchiniatwork/ambiente {:mvn/version "0.1.1"}}}
 ```
 
 

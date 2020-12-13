@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>ambiente</groupId>
+  <groupId>luchiniatwork</groupId>
   <artifactId>ambiente</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <name>ambiente</name>
   <dependencies>
     <dependency>
@@ -12,6 +12,11 @@
       <version>1.10.1</version>
     </dependency>
   </dependencies>
+  <scm>
+    <connection>scm:git:git@github.com:luchiniatwork/ambiente.git</connection>
+    <developerConnection>scm:git:git@github.com:luchiniatwork/ambiente.git</developerConnection>
+    <url>https://github.com/luchiniatwork/ambiente</url>
+  </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
   </build>
@@ -21,4 +26,11 @@
       <url>https://repo.clojars.org/</url>
     </repository>
   </repositories>
+  <distributionManagement>
+    <repository>
+      <id>clojars</id>
+      <name>Clojars repository</name>
+      <url>https://clojars.org/repo</url>
+    </repository>
+  </distributionManagement>
 </project>
