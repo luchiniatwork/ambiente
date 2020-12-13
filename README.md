@@ -40,7 +40,7 @@ format.
 Include the following dependency in your `deps.edn`:
 
 ```clojure
-{:deps {luchiniatwork/ambiente {:mvn/version "0.1.1"}}}
+{:deps {luchiniatwork/ambiente {:mvn/version "0.1.2"}}}
 ```
 
 
@@ -100,6 +100,14 @@ characters "_" and "." with "-", and keywordize variable names. The
 environment variable `DATABASE_URL` and the system property
 `database.url` are therefore both converted to the same keyword
 `:database-url`.
+
+## Development
+
+Tests can be run with:
+
+``` bash
+$ clojure -A:test --watch
+```
 
 ## Motivation and Inspiration
 
