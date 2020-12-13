@@ -73,7 +73,7 @@ environment variables and system properties:
 Alternatively, the `.env` file could have been used. It contains a
 list key/value pairs separated by newlines:
 
-``` toml
+``` text
 DATABASE_URL=jdbc:postgresql://localhost/dev
 ```
 
