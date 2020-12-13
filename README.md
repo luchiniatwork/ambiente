@@ -2,7 +2,7 @@
 [dotenv]: https://github.com/LynxEyes/dotenv.clj
 
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
-[license]: ./LICENSE
+[license]: #license
 
 [clojars-badge]: https://img.shields.io/clojars/v/luchiniatwork/ambiente.svg
 [clojars]: http://clojars.org/luchiniatwork/ambiente
