@@ -40,7 +40,7 @@ format.
 Include the following dependency in your `deps.edn`:
 
 ```clojure
-{:deps {luchiniatwork/ambiente {:mvn/version "0.1.2"}}}
+{:deps {luchiniatwork/ambiente {:mvn/version "0.1.3"}}}
 ```
 
 
@@ -128,6 +128,9 @@ storing data in the `project.clj` file. `Ambiente` of course does not
 fully remove this possibility (developers may still commit their
 `.env` files) but it at least assumes that `deps.edn`, environment
 variables and profiles are different things to be managed.
+
+As a bonus, I also wanted to be more explicit on the warnings
+emitted - particularly when variables are overwritten.
 
 ## License
 
