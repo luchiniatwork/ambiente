@@ -40,7 +40,7 @@ format.
 Include the following dependency in your `deps.edn`:
 
 ```clojure
-{:deps {luchiniatwork/ambiente {:mvn/version "0.1.3"}}}
+{:deps {luchiniatwork/ambiente {:mvn/version "0.1.4"}}}
 ```
 
 

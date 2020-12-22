@@ -95,5 +95,3 @@
 
 (defonce ^{:doc "A map of environment variables."}
   env (read-env))
-
-(read-env)
