@@ -25,11 +25,9 @@
   (->> rawstring
        s/split-lines
        (map s/trim)
-       (remove #(-> % empty?
-                    (s/starts-with? "#")))
-       (map #(s/split % #"="))
-       (map #(vec (->> % (map s/trim)
-                       (map unquote-string))))))
+       (remove #(-> % empty? (s/starts-with? "#")))
+       (map #(s/split % #"=" 2))
+       (map #(vec (->> % (map s/trim) (map unquote-string))))))
 
 (defn ^:private keywordize [s]
   (-> (s/lower-case s)
