@@ -3,13 +3,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>luchiniatwork</groupId>
   <artifactId>ambiente</artifactId>
-  <version>0.1.4</version>
+  <version>0.1.5</version>
   <name>ambiente</name>
   <dependencies>
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
-      <version>1.10.1</version>
+      <version>1.11.3</version>
     </dependency>
   </dependencies>
   <packaging>clojure</packaging>
@@ -70,4 +70,10 @@
     </plugins>
     <sourceDirectory>src</sourceDirectory>
   </build>
+  <licenses>
+  <license>
+    <name>MIT</name>
+    <url>https://opensource.org/license/MIT</url>
+  </license>
+</licenses>
 </project>

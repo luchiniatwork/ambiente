@@ -1,14 +1,3 @@
-[environ]: https://github.com/weavejester/environ
-[dotenv]: https://github.com/LynxEyes/dotenv.clj
-
-[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
-[license]: #license
-
-[clojars-badge]: https://img.shields.io/clojars/v/luchiniatwork/ambiente.svg
-[clojars]: http://clojars.org/luchiniatwork/ambiente
-
-[status-badge]: https://img.shields.io/badge/project%20status-prod-brightgreen.svg
-
 # Ambiente
 
 [![Clojars][clojars-badge]][clojars]
@@ -40,7 +29,7 @@ format.
 Include the following dependency in your `deps.edn`:
 
 ```clojure
-{:deps {luchiniatwork/ambiente {:mvn/version "0.1.4"}}}
+{:deps {luchiniatwork/ambiente {:mvn/version "0.1.5"}}}
 ```
 
 
@@ -136,3 +125,16 @@ emitted - particularly when variables are overwritten.
 
 Distributed under the MIT Public License. Use it as you
 will. Contribute if you have the time.
+
+<!-- links -->
+
+[environ]: https://github.com/weavejester/environ
+[dotenv]: https://github.com/LynxEyes/dotenv.clj
+
+[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[license]: #license
+
+[clojars-badge]: https://img.shields.io/clojars/v/luchiniatwork/ambiente.svg
+[clojars]: http://clojars.org/luchiniatwork/ambiente
+
+[status-badge]: https://img.shields.io/badge/project%20status-prod-brightgreen.svg
