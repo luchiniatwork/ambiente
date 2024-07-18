@@ -71,9 +71,9 @@
     <sourceDirectory>src</sourceDirectory>
   </build>
   <licenses>
-  <license>
-    <name>MIT</name>
-    <url>https://opensource.org/license/MIT</url>
-  </license>
-</licenses>
+    <license>
+      <name>MIT</name>
+      <url>https://opensource.org/license/MIT</url>
+    </license>
+  </licenses>
 </project>
