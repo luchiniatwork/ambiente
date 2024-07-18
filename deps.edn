@@ -1,12 +1,12 @@
 {:sources ["src"]
 
- :deps {org.clojure/clojure                             {:mvn/version "1.10.1"}}
+ :deps {org.clojure/clojure                             {:mvn/version "1.11.3"}}
 
  :aliases
  {:dev {:extra-paths ["dev"]}
 
   :test {:extra-paths ["test"]
          :extra-deps
-         {lambdaisland/kaocha                           {:mvn/version "1.0.732"}}
+         {lambdaisland/kaocha                           {:mvn/version "1.60.977"}}
          :main-opts
          ["-m" "kaocha.runner"]}}}
