@@ -92,7 +92,11 @@
   (testing ".env file ignore comments"
     (spit ".env" "#FOO=bar\nFOO=baz")
     (let [env (refresh-env)]
-      (is (= (:foo env) "baz")))))
+      (is (= (:foo env) "baz"))))
+  (testing ".env file with values containing `=`"
+    (spit ".env" "FOO='bar='")
+    (let [env (refresh-env)]
+      (is (= (:foo env) "bar=")))))
 
 (deftest test-priority-order
   (testing ".env trumps .env.edn"

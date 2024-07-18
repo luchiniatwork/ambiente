@@ -20,6 +20,10 @@
         (s/starts-with? string "'")  (unquote-singlequoted-string string)
         :else string))
 
+(defn ^:private split-pair [pair]
+  (let [[_ k v] (re-matches #"^([^=]+)=(.+)$" pair)]
+    [k v]))
+
 (defn ^:private to-pairs [rawstring]
   "converts a string containing the contents of a .env file into a list of pairs"
   (->> rawstring
@@ -27,7 +31,7 @@
        (map s/trim)
        (remove #(-> % empty?
                     (s/starts-with? "#")))
-       (map #(s/split % #"="))
+       (map split-pair)
        (map #(vec (->> % (map s/trim)
                        (map unquote-string))))))
 
