@@ -29,7 +29,7 @@ format.
 Include the following dependency in your `deps.edn`:
 
 ```clojure
-{:deps {luchiniatwork/ambiente {:mvn/version "0.1.5"}}}
+{:deps {luchiniatwork/ambiente {:mvn/version "0.1.6"}}}
 ```
 
 
@@ -89,6 +89,29 @@ characters "_" and "." with "-", and keywordize variable names. The
 environment variable `DATABASE_URL` and the system property
 `database.url` are therefore both converted to the same keyword
 `:database-url`.
+
+## Variable Assertions
+
+In some circumstances you may want to assert that your enviroment is
+properly set. In order to do that, use function `env-assert`:
+
+```clojure
+(require '[ambiente.core :refer [env-assert]])
+
+(env-assert [:foobar           ;; FOOBAR must be present
+             [:barfoo string?] ;; BARFOO must be a string
+             ;; FOO must not be "a" + custom message
+             [:foo #(not= "a" %) "should not be a"]
+             ;; BAR must not be "b" + exception handling
+             [:bar #(when (not= "b" %) (throw (ex-info "my error" {})))]])
+```
+
+`env-assert` throws an exception by default. If you don't want this
+behavior, use `{:throw? false}`:
+
+```clojure
+(env-assert [:foo] {:throw? false}) ;; => {:foo {:message "Missing"}}
+```
 
 ## Development
 

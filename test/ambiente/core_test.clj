@@ -109,6 +109,43 @@
     (let [env (refresh-env)]
       (is (= (:path env) (get-env "PATH"))))))
 
+
+(deftest test-env-assertions
+  (testing "all sorts of assertions"
+    (spit ".env.edn" (prn-str {:foo "bar" :bar "0" :barfoo "a"}))
+    (let [env (refresh-env)
+          assertions [:foobar
+                      [:foo #(= "bar" %) "No show"]
+                      [:bar #(not= 0 (Integer/parseInt %)) "should not be 0"]
+                      [:foo2 nil]
+                      [:barfoo #(not= % "a")]
+                      [:foo3 (fn [_] (throw (ex-info "error" {:my :data})))]]
+          errors (-> assertions
+                     (ambiente/env-assert {:throw? false}))]
+      (is (= {:message "Missing variable"
+              :anomaly :ambiente.core/variable-missing}
+             (:foobar errors)))
+      (is (= {:message "should not be 0"
+              :anomaly :ambiente.core/variable-validation-failed}
+             (:bar errors)))
+      (is (= {:message "Missing/wrong validation function for variable"
+              :anomaly :ambiente.core/invalid-validation-function}
+             (:foo2 errors)))
+      (is (= {:message "Validation function for variable returned false"
+              :anomaly :ambiente.core/variable-validation-failed}
+             (:barfoo errors)))
+      (is (= {:message "error", :my :data}
+             (:foo3 errors)))
+      (is (= '(:foobar :bar :foo2 :barfoo :foo3)
+             (keys errors)))
+      (is (thrown? clojure.lang.ExceptionInfo (-> assertions ambiente/env-assert)))
+      (try
+        (-> assertions ambiente/env-assert)
+        (catch clojure.lang.ExceptionInfo ex
+          (is (= "Variable assertion error" (.getMessage ex)))
+          (is (= '(:foobar :bar :foo2 :barfoo :foo3)
+                 (-> ex ex-data :errors keys))))))))
+
 ;; FIXME: This has undeterministic behavior - it depends on which order things were run
 #_(deftest test-warnings
     (testing "sanitizing key"

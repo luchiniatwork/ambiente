@@ -99,3 +99,42 @@
 
 (defonce ^{:doc "A map of environment variables."}
   env (read-env))
+
+(defn env-assert
+  ([assertions]
+   (env-assert assertions nil))
+  ([assertions {:keys [throw?]
+                :or {throw? true}}]
+   (let [errors (atom {})]
+     (doseq [assertion assertions]
+       (let [[assertion-type varname] (cond
+                                        (keyword? assertion)
+                                        [:keyword assertion]
+                                        (sequential? assertion)
+                                        [:vector (first assertion)])]
+         (try
+           (case assertion-type
+             :keyword
+             (when (nil? (env varname))
+               (throw (ex-info "Missing variable"
+                               {:anomaly ::variable-missing})))
+             :vector
+             (let [[_ f msg] assertion]
+               (when (not (fn? f))
+                 (throw (ex-info "Missing/wrong validation function for variable"
+                                 {:anomaly ::invalid-validation-function})))
+               (when (not (f (env varname)))
+                 (if msg
+                   (throw (ex-info msg
+                                   {:anomaly ::variable-validation-failed}))
+                   (throw (ex-info "Validation function for variable returned false"
+                                   {:anomaly ::variable-validation-failed}))))))
+           (catch Throwable ex
+             (let [error (merge {:message (.getMessage ex)}
+                                (ex-data ex))]
+               (swap! errors assoc varname error))))))
+     (when (not (empty? @errors))
+       (if throw?
+         (throw (ex-info "Variable assertion error"
+                         {:errors @errors}))
+         @errors)))))
